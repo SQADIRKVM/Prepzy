@@ -9,6 +9,8 @@ import {
   Platform,
   Modal,
   KeyboardAvoidingView,
+  Dimensions,
+  useWindowDimensions,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -1426,7 +1428,7 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     maxHeight: '85%',
     borderRadius: 20,
-    padding: 24,
+    padding: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 16 : 24,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
@@ -1555,7 +1557,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   calendarMonth: {
-    fontSize: 18,
+    fontSize: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 16 : 18,
     fontWeight: '700',
   },
   calendarGrid: {
@@ -1577,7 +1579,7 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   calendarDayText: {
-    fontSize: 14,
+    fontSize: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 13 : 14,
     fontWeight: '500',
   },
   webTimePicker: {
@@ -1594,7 +1596,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    gap: 16,
+    gap: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 8 : 16,
   },
   timeInputGroup: {
     flexDirection: 'column',
@@ -1608,14 +1610,14 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   simpleTimeInput: {
-    width: 60,
-    height: 48,
+    width: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 50 : 60,
+    height: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 44 : 48,
     borderRadius: 8,
     borderWidth: 1,
-    fontSize: 18,
+    fontSize: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 16 : 18,
     fontWeight: '700',
     textAlign: 'center',
-    paddingHorizontal: 8,
+    paddingHorizontal: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 4 : 8,
   },
   simpleTimeSeparator: {
     fontSize: 24,
@@ -1627,8 +1629,8 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   simpleAmPmButton: {
-    width: 45,
-    height: 48,
+    width: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 40 : 45,
+    height: Platform.OS === 'web' && Dimensions.get('window').width < 400 ? 44 : 48,
     borderRadius: 8,
     borderWidth: 1,
     justifyContent: 'center',
