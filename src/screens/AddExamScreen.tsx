@@ -37,6 +37,9 @@ export default function AddExamScreen({ navigation, route }: Props) {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState(new Date());
   const [showCustomDatePicker, setShowCustomDatePicker] = useState(false);
+  const windowDimensions = useWindowDimensions();
+  const isMobile = Platform.OS === 'web' && windowDimensions.width < 450;
+
   const [showCustomTimePicker, setShowCustomTimePicker] = useState(false);
   const [tempDate, setTempDate] = useState(new Date());
   const [tempHour, setTempHour] = useState(new Date().getHours());
@@ -921,7 +924,10 @@ export default function AddExamScreen({ navigation, route }: Props) {
         onRequestClose={() => setShowCustomDatePicker(false)}
       >
         <View style={styles.modalOverlay}>
-          <View style={[styles.modalContent, { backgroundColor: theme.colors.card }]}>
+          <View style={[styles.modalContent, {
+            backgroundColor: theme.colors.card,
+            padding: isMobile ? 16 : 24,
+          }]}>
             <Text style={[styles.modalTitle, { color: theme.colors.text.primary }]}>
               Select Date
             </Text>
@@ -941,7 +947,10 @@ export default function AddExamScreen({ navigation, route }: Props) {
                   <Pressable onPress={() => handleMonthChange(-1)} style={styles.calendarNavButton}>
                     <Ionicons name="chevron-back" size={24} color={theme.colors.text.primary} />
                   </Pressable>
-                  <Text style={[styles.calendarMonth, { color: theme.colors.text.primary }]}>
+                  <Text style={[styles.calendarMonth, {
+                    color: theme.colors.text.primary,
+                    fontSize: isMobile ? 16 : 18,
+                  }]}>
                     {tempDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                   </Text>
                   <Pressable onPress={() => handleMonthChange(1)} style={styles.calendarNavButton}>
@@ -982,7 +991,10 @@ export default function AddExamScreen({ navigation, route }: Props) {
                         >
                           <Text style={[
                             styles.calendarDayText,
-                            { color: isSelected ? theme.colors.text.inverse : theme.colors.text.primary }
+                            {
+                              color: isSelected ? theme.colors.text.inverse : theme.colors.text.primary,
+                              fontSize: isMobile ? 13 : 14,
+                            }
                           ]}>
                             {day}
                           </Text>
@@ -1001,15 +1013,19 @@ export default function AddExamScreen({ navigation, route }: Props) {
                   </Text>
                   
                   {/* Simple Row Layout */}
-                  <View style={styles.simpleTimeRow}>
+                  <View style={[styles.simpleTimeRow, { gap: isMobile ? 8 : 16 }]}>
                     {/* Hour Input */}
                     <View style={styles.timeInputGroup}>
                       <Text style={[styles.timeInputLabel, { color: theme.colors.text.secondary }]}>Hour</Text>
                       <TextInput
-                        style={[styles.simpleTimeInput, { 
-                          backgroundColor: theme.colors.card, 
+                        style={[styles.simpleTimeInput, {
+                          backgroundColor: theme.colors.card,
                           color: theme.colors.text.primary,
-                          borderColor: theme.colors.border 
+                          borderColor: theme.colors.border,
+                          width: isMobile ? 50 : 60,
+                          height: isMobile ? 44 : 48,
+                          fontSize: isMobile ? 16 : 18,
+                          paddingHorizontal: isMobile ? 4 : 8,
                         }]}
                         value={temp12Hour.toString()}
                         onChangeText={(text) => {
@@ -1034,10 +1050,14 @@ export default function AddExamScreen({ navigation, route }: Props) {
                     <View style={styles.timeInputGroup}>
                       <Text style={[styles.timeInputLabel, { color: theme.colors.text.secondary }]}>Minute</Text>
                       <TextInput
-                        style={[styles.simpleTimeInput, { 
-                          backgroundColor: theme.colors.card, 
+                        style={[styles.simpleTimeInput, {
+                          backgroundColor: theme.colors.card,
                           color: theme.colors.text.primary,
-                          borderColor: theme.colors.border 
+                          borderColor: theme.colors.border,
+                          width: isMobile ? 50 : 60,
+                          height: isMobile ? 44 : 48,
+                          fontSize: isMobile ? 16 : 18,
+                          paddingHorizontal: isMobile ? 4 : 8,
                         }]}
                         value={tempMinute.toString()}
                         onChangeText={(text) => {
@@ -1075,9 +1095,11 @@ export default function AddExamScreen({ navigation, route }: Props) {
                         <Pressable
                           style={[
                             styles.simpleAmPmButton,
-                            { 
+                            {
                               backgroundColor: tempAmPm === 'AM' ? theme.colors.primary : theme.colors.card,
-                              borderColor: theme.colors.border 
+                              borderColor: theme.colors.border,
+                              width: isMobile ? 40 : 45,
+                              height: isMobile ? 44 : 48,
                             }
                           ]}
                           onPress={() => setTempAmPm('AM')}
@@ -1092,9 +1114,11 @@ export default function AddExamScreen({ navigation, route }: Props) {
                         <Pressable
                           style={[
                             styles.simpleAmPmButton,
-                            { 
+                            {
                               backgroundColor: tempAmPm === 'PM' ? theme.colors.primary : theme.colors.card,
-                              borderColor: theme.colors.border 
+                              borderColor: theme.colors.border,
+                              width: isMobile ? 40 : 45,
+                              height: isMobile ? 44 : 48,
                             }
                           ]}
                           onPress={() => setTempAmPm('PM')}
