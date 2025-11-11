@@ -5,6 +5,8 @@ import { StyleSheet, Platform, View } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import * as Notifications from 'expo-notifications';
 import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
+import { Ionicons, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import AppNavigator from './src/navigation/AppNavigator';
 import { useStore } from './src/store';
 import { ThemeProvider } from './src/context/ThemeContext';
@@ -29,6 +31,13 @@ export default function App() {
   useEffect(() => {
     async function prepare() {
       try {
+        // Load icon fonts for web
+        await Font.loadAsync({
+          ...Ionicons.font,
+          ...MaterialIcons.font,
+          ...MaterialCommunityIcons.font,
+        });
+
         // Load persisted data
         await loadData();
 
