@@ -1,5 +1,7 @@
-import { registerRootComponent } from 'expo';
+// IMPORTANT: This must be imported first to polyfill crypto.getRandomValues()
+import 'react-native-get-random-values';
 
+import { registerRootComponent } from 'expo';
 import App from './App';
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);

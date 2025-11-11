@@ -1,0 +1,28 @@
+# Ignore files from EAS builds to reduce upload size
+.git
+.expo
+.vscode
+node_modules/.cache
+*.log
+.DS_Store
+.env.local
+.env.*.local
+__tests__
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+coverage
+docs
+examples
+
+# Ignore ALL markdown files
+*.md
+**/*.md
+*.MD
+**/*.MD
+
+# Ignore backup folders
+assets_backup
+*_backup/
+backup/

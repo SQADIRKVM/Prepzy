@@ -1,0 +1,10 @@
+# Exclude markdown files from export archives
+*.md export-ignore
+*.MD export-ignore
+
+# Exclude documentation and development files
+*.log export-ignore
+.DS_Store export-ignore
+__tests__ export-ignore
+coverage export-ignore
+docs export-ignore

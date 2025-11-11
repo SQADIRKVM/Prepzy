@@ -31,6 +31,7 @@ yarn-error.*
 *.pem
 
 # local env files
+.env
 .env*.local
 
 # typescript
@@ -39,3 +40,24 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Internal documentation files (development notes)
+APP_FLOW.md
+BUILD_GUIDE.md
+BUILD_SIZE_OPTIMIZATION.md
+CHECKLIST.md
+CLEANUP_PLAN.md
+DEVELOPMENT.md
+FEATURES_ROADMAP.md
+FEATURE_STATUS.md
+FINAL_SUMMARY.md
+GEMINI_INTEGRATION_SUMMARY.md
+PROJECT_SUMMARY.md
+PWA_SETUP.md
+QUICKSTART.md
+QUICK_START_SIZE_REDUCTION.md
+REDESIGN_PLAN.md
+START_HERE.md
+TROUBLESHOOTING.md
+UUID_FIX.md
+WEB_PLATFORM_FIX.md
